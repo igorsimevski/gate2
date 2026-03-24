@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Route Navigation"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Pre-determined Points -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pre-determined Route:"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvStartPoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Start Point: "
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvTurnPoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Turn Point: "
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvEndPoint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="End Point: "
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvApproachDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Approach Distance: "
+                android:layout_marginTop="4dp"
+                android:textStyle="italic" />
+
+            <!-- Signal Container -->
+            <LinearLayout
+                android:id="@+id/signalContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_marginTop="16dp"
+                android:background="#FFF3E0">
+
+                <TextView
+                    android:id="@+id/tvSignalMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:padding="8dp" />
+            </LinearLayout>
+
+            <!-- Current Location -->
+            <TextView
+                android:id="@+id/tvCurrentLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Current Location: Waiting for GPS..."
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:background="#E0E0E0" />
+
+            <!-- Distance Information -->
+            <TextView
+                android:id="@+id/tvDistanceToStart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Distance to Start: -- m"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:id="@+id/tvDistanceToTurn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Distance to Turn: -- m"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvDistanceToEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Distance to End: -- m"
+                android:layout_marginTop="4dp" />
+
+            <!-- Route Status -->
+            <TextView
+                android:id="@+id/tvRouteStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status: Waiting to start"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"
+                android:background="#BBDEFB"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Status: Stopped"
+                android:layout_marginTop="8dp" />
+
+            <!-- Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="24dp">
+
+                <Button
+                    android:id="@+id/btnStartTracking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Start Tracking"
+                    android:layout_marginEnd="8dp" />
+
+                <Button
+                    android:id="@+id/btnStopTracking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Stop Tracking"
+                    android:enabled="false" />
+            </LinearLayout>
+
+            <!-- Instructions -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instructions:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="24dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Enable GPS/Location services\n2. Click 'Start Tracking'\n3. Navigate from Start → Turn → End\n4. Signal will appear when within 50m of end point\n5. The signal will blink and show a warning"
+                android:layout_marginTop="4dp"
+                android:lineSpacingExtra="4dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
