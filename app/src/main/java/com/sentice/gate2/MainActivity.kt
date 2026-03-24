@@ -41,18 +41,18 @@ class MainActivity : AppCompatActivity() {
 
     // Pre-determined points (example coordinates - replace with your actual coordinates)
     private val startPoint = Location("").apply {
-        latitude = 37.7749
-        longitude = -122.4194
+        latitude = 42.001675
+        longitude = 21.407021
     }
 
     private val turnPoint = Location("").apply {
-        latitude = 37.7755
-        longitude = -122.4180
+        latitude = 42.001865
+        longitude = 21.405560
     }
 
     private val endPoint = Location("").apply {
-        latitude = 37.7760
-        longitude = -122.4165
+        latitude = 42.001989
+        longitude = 21.405055
     }
 
     private var hasReachedStart = false
