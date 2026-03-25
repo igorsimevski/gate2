@@ -20,49 +20,31 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Route Navigation"
-                android:textSize="24sp"
+                android:text="Route Navigation (Background)"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:gravity="center"
-                android:layout_marginBottom="24dp" />
+                android:layout_marginBottom="16dp" />
 
-            <!-- Pre-determined Points -->
+            <!-- Route Points List -->
             <TextView
+                android:id="@+id/tvPointsList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Pre-determined Route:"
-                android:textSize="18sp"
+                android:text="Loading route points..."
+                android:textSize="12sp"
+                android:background="#F0F0F0"
+                android:padding="8dp"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Route Info -->
+            <TextView
+                android:id="@+id/tvRouteInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Route Information"
                 android:textStyle="bold"
                 android:layout_marginTop="8dp" />
-
-            <TextView
-                android:id="@+id/tvStartPoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Start Point: "
-                android:layout_marginTop="4dp" />
-
-            <TextView
-                android:id="@+id/tvTurnPoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Turn Point: "
-                android:layout_marginTop="4dp" />
-
-            <TextView
-                android:id="@+id/tvEndPoint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="End Point: "
-                android:layout_marginTop="4dp" />
-
-            <TextView
-                android:id="@+id/tvApproachDistance"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Approach Distance: "
-                android:layout_marginTop="4dp"
-                android:textStyle="italic" />
 
             <!-- Signal Container -->
             <LinearLayout
@@ -71,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:background="#FFF3E0">
 
                 <TextView
@@ -92,39 +74,56 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Current Location: Waiting for GPS..."
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:padding="8dp"
                 android:background="#E0E0E0" />
 
-            <!-- Distance Information -->
+            <!-- Navigation Information -->
             <TextView
-                android:id="@+id/tvDistanceToStart"
+                android:id="@+id/tvCurrentPoint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Distance to Start: -- m"
-                android:layout_marginTop="8dp" />
+                android:text="Current Target: --"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvDistanceToTurn"
+                android:id="@+id/tvNextPoint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Distance to Turn: -- m"
+                android:text="Next: --"
                 android:layout_marginTop="4dp" />
 
             <TextView
-                android:id="@+id/tvDistanceToEnd"
+                android:id="@+id/tvDistanceToNext"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Distance to End: -- m"
+                android:text="Distance to Next: -- m"
                 android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvProgress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Progress: 0/6 points"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvApproachDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="End Point Alert Distance: 50m"
+                android:layout_marginTop="4dp"
+                android:textStyle="italic" />
 
             <!-- Route Status -->
             <TextView
                 android:id="@+id/tvRouteStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Status: Waiting to start"
-                android:layout_marginTop="16dp"
+                android:text="Status: Waiting for start"
+                android:layout_marginTop="8dp"
                 android:padding="8dp"
                 android:background="#BBDEFB"
                 android:textStyle="bold" />
@@ -133,30 +132,32 @@
                 android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Status: Stopped"
-                android:layout_marginTop="8dp" />
+                android:text="Status: Not Tracking"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold" />
 
             <!-- Buttons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginTop="24dp">
+                android:layout_marginTop="16dp">
 
                 <Button
-                    android:id="@+id/btnStartTracking"
+                    android:id="@+id/btnPauseTracking"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Start Tracking"
-                    android:layout_marginEnd="8dp" />
+                    android:text="Pause Tracking"
+                    android:layout_marginEnd="8dp"
+                    android:enabled="false" />
 
                 <Button
-                    android:id="@+id/btnStopTracking"
+                    android:id="@+id/btnResumeTracking"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Stop Tracking"
+                    android:text="Resume Tracking"
                     android:enabled="false" />
             </LinearLayout>
 
@@ -165,16 +166,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Instructions:"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:layout_marginTop="24dp" />
+                android:layout_marginTop="16dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="1. Enable GPS/Location services\n2. Click 'Start Tracking'\n3. Navigate from Start → Turn → End\n4. Signal will appear when within 50m of end point\n5. The signal will blink and show a warning"
+                android:text="1. Service runs in background with notification\n2. Tracking starts automatically on app launch\n3. Use Pause/Resume to temporarily stop location updates\n4. Navigate through all route points in order\n5. Signal appears when within 50m of end point\n6. App continues tracking even when minimized"
                 android:layout_marginTop="4dp"
-                android:lineSpacingExtra="4dp" />
+                android:textSize="12sp"
+                android:lineSpacingExtra="2dp" />
 
         </LinearLayout>
     </ScrollView>
